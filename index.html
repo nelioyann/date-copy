@@ -50,7 +50,13 @@
         </header>
         <section class="date flex-d-c flex flex-ai-c flex-jc-c">
             <label for="mr"> 🧔 <br>
-                <input type="text" name="mr" value="Mr" id="mr" disabled>
+                <input type="text" name="mr" value="Mr" id="mr" readonly>
+            </label>
+            <label for="mme"> 👩 <br>
+                <input type="text" name="mme" value="Mme" id="mme" readonly>
+            </label>
+            <label for="mrmme"> 🧔👩 <br>
+                <input type="text" name="mrmme" value="Mr&Mme" id="mrmme" readonly>
             </label>
             <label for="date">
                 <span>
@@ -80,16 +86,22 @@ if ("serviceWorker" in navigator) {
   
 
             const elDate = document.querySelector("#date");
-            elDate.addEventListener("change", copy);
-            elDate.addEventListener("click", copy);
+            const elMr = document.querySelector("#mr")
+            const elMme = document.querySelector("#mme")
+            const elMrmme = document.querySelector("#mrmme")
+            
             const copy = (e) => {
-                let raw_value = (e.curentTarget.value)
+                let raw_value = (e.target.value)
                 let date = raw_value.split("-").reverse().join("/");
                 navigator.clipboard.writeText(date);
                 showFeedback("Date Copied ! 📋");
             }
 
-
+            elDate.addEventListener("change", copy);
+            elDate.addEventListener("click", copy);
+            elMr.addEventListener("click", copy)
+            elMme.addEventListener("click", copy)
+            elMrmme.addEventListener("click", copy)
             const feedback = document.querySelector(".feedback");
             const showFeedback = (message) => {
                 if (message == "") return null;
