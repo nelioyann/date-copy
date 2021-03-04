@@ -9,9 +9,11 @@ body{
     line-height: 1.6;
     overflow-x: hidden;
     font-family: $font_body;
-    max-width: 914px;
+    // max-width: 914px;
     margin: 0 auto;
     padding: 0;
+    width: 100%;
+    min-height: 100vh;
     
 }
 

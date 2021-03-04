@@ -86,9 +86,10 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   font-family: "Open Sans", sans-serif;
-  max-width: 914px;
   margin: 0 auto;
   padding: 0;
+  width: 100%;
+  min-height: 100vh;
 }
 
 img {

@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+    <link rel="manifest" href="manifest.json">
     <!-- Custom Browser colors on Mobile -->
     <meta name="theme-color" content="#1843c1" />
     <meta name="apple-mobile-web-app-status-bar-style" content="#1843c1">
@@ -40,14 +42,15 @@
 </head>
 
 <body class="theme-dark grid gap">
-    <main data-barba="wrapper" class="">
+    <main data-barba="wrapper" class="flex flex-d-c">
         <header class="flex flex-d-c flex-ai-c flex-jc-sb">
             <h1>Simpler Date Copyier</h1>
             <p>Copy the selected date</p>
 
         </header>
-        <section class="flex flex-ai-c flex-jc-c">
+        <section class="date flex flex-ai-c flex-jc-c">
             <label for="date">
+                Select a date
                 <input type="date" name="date" id="date">
             </label>
         </section>
@@ -56,6 +59,20 @@
         <!-- <script src="https://unpkg.com/@barba/core"></script> -->
         <!-- <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script> -->
         <script>
+
+
+
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      // path from the root folder
+      navigator.serviceWorker
+        .register("./sw.js")
+        .then(reg => console.log("service worker registered"))
+        .catch(err => console.log("service worker not registered"));
+    });
+  }
+  
+
             const elDate = document.querySelector("#date");
             elDate.addEventListener("change", () => {
                 console.log(elDate.value)
@@ -96,6 +113,9 @@
     /* opacity: 0; */
     z-index: 3;
     transition: 300ms;
+}
+.date{
+    flex: 2 1 auto;
 }
 
 .feedback.active {
