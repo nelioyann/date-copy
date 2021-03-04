@@ -76,7 +76,8 @@ if ("serviceWorker" in navigator) {
             const elDate = document.querySelector("#date");
             elDate.addEventListener("change", () => {
                 console.log(elDate.value)
-                navigator.clipboard.writeText(elDate.value);
+                let date = elDate.value.split("-").reverse().join("-");
+                navigator.clipboard.writeText(date);
                 showFeedback("Date Copied ! 📋");
             });
             
