@@ -11,7 +11,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#1843c1">
 
     <!-- Primary Meta Tags -->
-    <title>Build simpler websites in small steps</title>
+    <title>Simple Date Copier</title>
     <meta name="title" content="Build simpler websites in small steps">
     <meta name="description"
         content="With Simpler Websites you can edit and experiment with your content to make it accessible.">
@@ -36,62 +36,74 @@
     <meta property="twitter:image" content="">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
-<body  class="theme-dark grid gap">
+<body class="theme-dark grid gap">
     <main data-barba="wrapper" class="">
-        <header class="flex flex-ai-c flex-jc-sb">
-            <h1>Simpler Websites</h1>
-            <nav>
-                <a href="/about.html">About</a>
-                <a href="/">Home</a>
-            </nav>
+        <header class="flex flex-d-c flex-ai-c flex-jc-sb">
+            <h1>Simpler Date Copyier</h1>
+            <p>Copy the selected date</p>
+
         </header>
-        <div class="load-container">
-            <div class="loading-screen"></div>
-        </div>
-
-        <section data-barba="container" data-barba-namespace="home">
-
-            <h2 class="animate-fade-up">Home: Less is more</h2>
-            <h3 >Lorem ipsum dolor sit amet.</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil recusandae voluptates repudiandae dolorem
-                expedita dignissimos earum officiis quo provident nam cum molestiae perspiciatis dolores, facere hic
-                minus, quae
-                itaque quasi.</p>
-            <h2 class="animate-fade-up">More is less</h2>
-            <h3>Lorem.</h3>
-           
-            <figure class="animate-fade-up">
-                <img src="https://picsum.photos/1500/628" alt="Placeholder Image">
-
-                <figcaption>A placeholder image</figcaption>
-            </figure>
+        <section class="flex flex-ai-c flex-jc-c">
+            <label for="date">
+                <input type="date" name="date" id="date">
+            </label>
         </section>
-    </main>
-    <aside class="">
-        <section>
-            <h2>Reveal on Scroll</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores rerum sequi numquam officia repellat
-                maxime, quis unde consectetur est debitis neque, illo enim voluptate animi modi adipisci eum aliquam!
-                Rem, tempore veritatis fuga dolorem nobis ullam necessitatibus voluptatibus dolores, alias aspernatur
-                sunt unde minus cum incidunt iste fugiat placeat obcaecati laboriosam ipsum. Temporibus repudiandae ipsa
-                repellat aperiam voluptate sapiente reiciendis?</p>
-            <h3>Lorem ipsum dolor sit.</h3>
-            <ul>
-                <li>Lorem ipsum</li>
-                <li>Lorem ipsum</li>
-                <li>Lorem ipsum</li>
-                <li>Lorem ipsum</li>
-                <li>Lorem ipsum</li>
-            </ul>
-        </section>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.6.0/dist/gsap.min.js"></script>
-    <!-- <script src="https://unpkg.com/@barba/core"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
+        <div class="feedback"></div>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.6.0/dist/gsap.min.js"></script> -->
+        <!-- <script src="https://unpkg.com/@barba/core"></script> -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script> -->
+        <script>
+            const elDate = document.querySelector("#date");
+            elDate.addEventListener("change", () => {
+                console.log(elDate.value)
+                navigator.clipboard.writeText(elDate.value);
+                showFeedback("Date Copied ! 📋");
+            });
+            
 
-    <script src="./scripts/transitions.js"></script>
+
+            const feedback = document.querySelector(".feedback");
+            const showFeedback = (message) => {
+                if (message == "") return null;
+                feedback.innerHTML = message;
+                feedback.classList.add("active");
+                setTimeout(() => {
+                    feedback.classList.remove("active");
+                }, 3000);
+            }
+
+        </script>
+        <style>
+            .feedback {
+    font-family: sans-serif;
+    position: absolute;
+    right: -150%;
+    top: 0.5rem;
+    font-weight: bold;
+    text-align: center;
+    background-color: #DDD;
+    color: #222222;
+    line-height: 2;
+    min-width: 200px;
+    /* margin: auto; */
+    padding: 0.5em 1em;
+    border-radius: 0.2em;
+    width: max-content;
+    /* box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.2); */
+    /* opacity: 0; */
+    z-index: 3;
+    transition: 300ms;
+}
+
+.feedback.active {
+    right: 10%;
+    opacity: 1;
+}
+        </style>
+        <!-- <script src="./scripts/transitions.js"></script> -->
 </body>
 
 </html>
