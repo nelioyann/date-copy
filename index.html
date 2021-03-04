@@ -48,9 +48,15 @@
             <p>Copy the selected date</p>
 
         </header>
-        <section class="date flex flex-ai-c flex-jc-c">
+        <section class="date flex-d-c flex flex-ai-c flex-jc-c">
+            <label for="mr"> 🧔 <br>
+                <input type="text" name="mr" value="Mr" id="mr" disabled>
+            </label>
             <label for="date">
-                Select a date
+                <span>
+                Select a date <br>
+
+                </span>
                 <input type="date" name="date" id="date">
             </label>
         </section>
@@ -74,13 +80,14 @@ if ("serviceWorker" in navigator) {
   
 
             const elDate = document.querySelector("#date");
-            elDate.addEventListener("change", () => {
-                console.log(elDate.value)
-                let date = elDate.value.split("-").reverse().join("-");
+            elDate.addEventListener("change", copy);
+            elDate.addEventListener("click", copy);
+            const copy = (e) => {
+                let raw_value = (e.curentTarget.value)
+                let date = raw_value.split("-").reverse().join("/");
                 navigator.clipboard.writeText(date);
                 showFeedback("Date Copied ! 📋");
-            });
-            
+            }
 
 
             const feedback = document.querySelector(".feedback");
